@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070b05">
+  <meta name="description" content="Five Nights at Güngör: The Third Shift — özgün bir atmosferik güvenlik-korku oyunu.">
+  <title>Five Nights at Güngör — THE THIRD SHIFT</title>
+  <link rel="preload" href="assets/office.webp" as="image">
+  <link rel="preload" href="assets/menu_art.webp" as="image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div class="global-grain" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div id="fade" class="fadeout hidden"></div>
+
+  <section id="menu" class="screen menu" aria-label="Ana menü">
+    <div class="menu-back"></div><div class="menu-veil"></div>
+    <div class="menu-drift" aria-hidden="true"></div>
+    <div class="menu-main">
+      <div class="mini-rule">GÜNGÖR ENTERTAINMENT / ARCHIVE 1997</div>
+      <h1><small>FIVE NIGHTS</small><small>AT</small><span>GÜNGÖR</span></h1>
+      <div class="the-third">THE THIRD SHIFT <i>///</i> FACILITY 03</div>
+      <nav class="menu-links" aria-label="Oyun menüsü">
+        <button id="newBtn" class="menu-link focus">YENİ OYUN <span>01</span></button>
+        <button id="continueBtn" class="menu-link">DEVAM ET <span id="continueNight">—</span></button>
+        <button id="nightsBtn" class="menu-link">GECE SEÇİMİ <span>02</span></button>
+        <button id="endlessBtn" class="menu-link">SONSUZ VARDİYA <span>03</span></button>
+        <button id="hardcoreBtn" class="menu-link">KARANLIK VARDİYA <span>!</span></button>
+        <button id="customBtn" class="menu-link">ÖZEL GECE <span>04</span></button>
+        <button id="extrasBtn" class="menu-link">ARŞİV / EKSTRALAR <span>05</span></button>
+        <button id="settingsBtn" class="menu-link">AYARLAR <span>06</span></button>
+      </nav>
+      <p class="menu-under">“Kameraları izleme. Onlar da seni izliyor.”</p>
+    </div>
+    <div class="menu-bottom"><span>FAN GAME · ÖZGÜN İÇERİK</span><span>VER. 3.0 — SIGNAL RECOVERED</span></div>
+  </section>
+
+  <section id="intro" class="screen hidden intro" aria-label="Gece başlangıcı">
+    <div class="intro-lines"></div>
+    <div class="intro-card">
+      <div class="mono-label">VARDİYA DOSYASI // FACILITY 03</div>
+      <div class="intro-title" id="introNight">GECE 01</div>
+      <div class="intro-time">12:00 <span>AM</span></div>
+      <p id="introDesc">Eski eğlence merkezinde yeni bir gece.</p>
+      <div class="intro-tip">KAMERA [C] &nbsp; SİSTEMLER [S] &nbsp; SES TUZAĞI [L]</div>
+      <button class="metal-button primary" id="beginBtn">VARDİYAYI BAŞLAT →</button>
+      <button class="text-button" id="introBack">← MENÜYE DÖN</button>
+    </div>
+  </section>
+
+  <section id="game" class="screen hidden" aria-label="Oyun">
+    <div id="officeWorld" class="office-world"><div class="office-bg"></div><div class="office-tint"></div><div id="officeFace" class="office-face hidden"></div><div id="phantomOffice" class="phantom-office hidden"></div><div class="dust" aria-hidden="true"></div><div class="office-shade"></div></div>
+    <header class="game-header">
+      <div><strong class="game-id">GÜNGÖR FACILITY // 03</strong><small><span class="live-bulb"></span> GECE GÖZETİMİ <span id="signalText" class="status-norm">SİNYAL KARARLI</span></small></div>
+      <div class="nightclock"><span id="clockText">12 AM</span><small id="nightLabel">GECE 01</small></div>
+    </header>
+    <div id="warningStack" class="warning-stack"></div>
+    <div id="officeMessage" class="office-message">Radyo sinyali bulunamadı...</div>
+    <div id="breathing" class="breathing hidden"></div>
+    <div class="game-bottom"><button id="openSystems" class="footer-button"><b>⚙</b><span>BAKIM PANELİ <small>[S]</small></span></button><div class="bottom-center"><span class="blink-small">●</span> YEREL GÖZETİM<br><b id="zoneHint">DURUM: KONTROL ALTINDA</b></div><button id="openMonitor" class="footer-button footer-right"><span>KAMERALAR <small>[C]</small></span><b>▤</b></button></div>
+    <div id="monitor" class="monitor hidden" aria-label="Güvenlik kameraları">
+      <div class="monitor-frame">
+        <div class="feed-area"><img id="feedImage" src="assets/cam_01.webp" alt="Kamera görüntüsü"><div id="feedGhost" class="feed-ghost hidden"></div><div id="feedMonster" class="feed-monster hidden"></div><div class="feed-noise"></div><div class="feed-glass"></div><div class="feed-title"><span id="camTitle">CAM 01</span><small id="camLocation">LOADING...</small></div><div class="feed-rec">● REC <span id="feedClock">00:00:00</span></div><div id="videoErrorOverlay" class="video-error hidden"><span>VIDEO ERROR</span><small>SİNYAL KAYBOLDU</small></div><div id="cameraHint">ALAN TARAMASI / AKTİF</div></div>
+        <aside class="monitor-sidebar"><div class="monitor-sidebar-head">GÜVENLİK AĞI <small>03/A</small></div><div class="cam-tabs"><button id="roomTab" class="cam-tab active">ODALAR</button><button id="ventTab" class="cam-tab">HAVALANDIRMA</button></div><div id="camMap" class="cam-map"></div><div class="map-bottom">■ <span id="mapCurrent">SİZ / GÜVENLİK OFİSİ</span></div><div class="monitor-commands"><button id="audioLure" class="metal-button primary">▷ SES TUZAĞI <small>[L]</small></button><button id="sealVent" class="metal-button hidden">▣ HAVA KANALINI MÜHÜRLE <small>[V]</small></button><div id="audioCooldown" class="cooldown-label">SES CİHAZI HAZIR</div></div></aside>
+      </div>
+      <div class="monitor-foot"><span id="monitorStatus">NET: CONNECTED / 12 CAMERAS</span><button id="closeMonitor" class="footer-button"><b>▾</b> MONİTÖRÜ KAPAT <small>[C]</small></button></div>
+    </div>
+    <aside id="systems" class="systems hidden" aria-label="Sistem bakım paneli"><div class="systems-head"><div><small>MAINTENANCE SERVICE</small><h2>BAKIM PANELİ</h2></div><button id="closeSystems" class="close-corner">✕</button></div><p class="sys-instruction">Bozulan sistemleri yeniden başlat. Bakım sırasında kameraları kullanamazsın.</p><div id="systemRows"></div><button id="repairAll" class="metal-button all">↻ TÜM SİSTEMLERİ YENİDEN BAŞLAT</button><div id="repairProgress" class="repair-progress hidden"><span id="repairText">YENİDEN BAŞLATILIYOR...</span><div><i id="repairBar"></i></div><small>Bakım devam ederken panele müdahale edemezsin.</small></div><div class="sys-footer">EMERGENCY OPERATIONS / BUILD 1997.03</div></aside>
+    <div id="scare" class="scare hidden"><img id="scareImage" src="assets/gungor_03.webp" alt="Korkutucu animatronik"><div class="scare-grain"></div></div>
+  </section>
+
+  <section id="end" class="screen hidden ending"><div class="ending-smoke"></div><div class="ending-main"><div id="endLabel" class="mini-rule">VARDİYA SONU</div><h2 id="endTitle">6:00 <span>AM</span></h2><p id="endDescription">Sabah oldu.</p><p id="endStats" class="end-stats"></p><div class="end-buttons"><button id="nextNight" class="metal-button primary">SONRAKİ GECE</button><button id="replay" class="metal-button">TEKRAR DENE</button><button id="backMenu" class="metal-button">ANA MENÜ</button></div></div></section>
+
+  <div id="modal" class="modal hidden" aria-label="Menü penceresi"><div class="modal-body"><header><div><small>FACILITY / GÜNGÖR</small><h2 id="modalTitle">BAŞLIK</h2></div><button id="modalClose" class="close-corner">✕</button></header><div id="modalContent"></div></div></div>
+  <div id="toast" class="toast hidden" role="status"></div>
+</div>
+<script src="game.js" defer></script>
+</body>
+</html>
